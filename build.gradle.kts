@@ -13,8 +13,8 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenLocal()
-    maven { val url = "https://maven.aliyun.com/repository/public/" }
-    maven { val url = "https://maven.aliyun.com/repository/spring/" }
+    maven("https://maven.aliyun.com/repository/public/")
+    maven("https://maven.aliyun.com/repository/spring/")
     jcenter()
     mavenCentral()
 }
