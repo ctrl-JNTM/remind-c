@@ -34,6 +34,12 @@
     
     **消息队列组件：** rocketMq
     
+---
+
+### 项目研发看板： 
+
+    gitkraken glo看板公开地址： https://app.gitkraken.com/glo/board/XdOL3fAbPwAPFLza
+    
     
     
     
