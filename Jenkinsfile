@@ -12,7 +12,7 @@ pipeline {
         NODE_BIN_DIR = 'node_modules/.bin'
         JOB_NAME = 'message-platform-admin'
         SONAR_HOST = "http://106.14.202.15:9000"
-        SONAR_LOGIN = '955f09040a501237067dbc723bfddb93d0ba3fad'
+        SONAR_LOGIN = '738d3f3e0c612ab043678e6d7f65ceb608da3e28'
     }
 
     parameters {
@@ -45,6 +45,22 @@ pipeline {
                     sh "echo GIT_BRANCH : ${env.GIT_BRANCH}"
                     sh "echo BUILD_NUMBER : ${env.BUILD_NUMBER}"
                     sh "echo JOB_NAME : ${env.JOB_NAME}"
+                }
+            }
+        }
+
+        stage('build && SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    sh './gradlew clean sonarqube -x test'
+                }
+            }
+        }
+
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
