@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     echo "开始构建"
-                    if(env.BRANCH_NAME.startsWith('feature-') && !env.BRANCH_NAME.startsWith('release-')&& env.BRANCH_NAME！='master'){
+                    if(env.BRANCH_NAME.startsWith('feature-') && !env.BRANCH_NAME.startsWith('release-')&& env.BRANCH_NAME!='master'){
                         error("自动构建分支名称必须是dev或以release-开头，当前分支名称为: ${env.BRANCH_NAME}")
                     }
 
