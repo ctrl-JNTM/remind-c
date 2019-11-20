@@ -10,5 +10,10 @@ import org.springframework.web.bind.annotation.RestController
 class RemindCApplication
 
 fun main(args: Array<String>) {
+    var target = -5
+    val num = 3
+
+    target =- num // Noncompliant; target = -3. Is that really what's meant?
+    target =+ num // Noncompliant; target = 3
     runApplication<RemindCApplication>(*args)
 }
