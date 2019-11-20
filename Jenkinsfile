@@ -49,7 +49,7 @@ pipeline {
             }
         }
 
-        stage('build && SonarQube analysis') {
+        stage('sonar静态检测') {
             steps {
                 withSonarQubeEnv('sonarQ') {
                     sh './gradlew clean sonarqube -x test'
@@ -57,7 +57,7 @@ pipeline {
             }
         }
 
-        stage("Quality Gate") {
+        stage("sonar检测结果分析") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
