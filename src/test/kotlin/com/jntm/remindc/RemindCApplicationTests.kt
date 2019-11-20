@@ -10,5 +10,4 @@ class RemindCApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
