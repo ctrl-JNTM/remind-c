@@ -51,7 +51,7 @@ pipeline {
 
         stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv('sonarQ') {
                     sh './gradlew clean sonarqube -x test'
                 }
             }
