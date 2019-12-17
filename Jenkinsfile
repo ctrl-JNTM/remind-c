@@ -9,6 +9,8 @@ pipeline {
     }
 
     environment {
+        registry = "gustavoapolinario/docker-test"
+        registryCredential = "dockerhub"
         NODE_BIN_DIR = 'node_modules/.bin'
         JOB_NAME = 'message-platform-admin'
         SONAR_HOST = "http://106.14.202.15:9000"
@@ -49,6 +51,10 @@ pipeline {
             }
         }
 
+        stage("单元测试"){
+
+        }
+
         stage('sonar静态检测') {
             steps {
                 withSonarQubeEnv('sonarQ') {
@@ -63,6 +69,23 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
+        }
+
+        stage("构建镜像"){
+             steps{
+                script{
+                    sh "docker build -t cgsj/remind-c:1.0.0 ."
+                }
+             }
+        }
+
+        stage("推送镜像"){
+            steps{
+                script{
+                    sh "sudo docker login --username=陈倔强may registry.cn-hangzhou.aliyuncs.com"
+
+                }
+             }
         }
     }
 }
