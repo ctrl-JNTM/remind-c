@@ -51,11 +51,6 @@ pipeline {
             }
         }
 
-        stage("单元测试"){
-            steps {
-                //do nothing
-            }
-        }
 
         stage('sonar静态检测') {
             steps {
