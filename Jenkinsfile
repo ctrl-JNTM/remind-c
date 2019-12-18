@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment {
-        REGISTRY = "registry.cn-shanghai.aliyuncs.com/cgsj"
+        REGISTRY = "registry-vpc.cn-shanghai.aliyuncs.com/cgsj"
         SERVICE_NAME = "remind-c"
         REGISTRY_CREDENTIAL = "alidocker"
         NODE_BIN_DIR = 'node_modules/.bin'
