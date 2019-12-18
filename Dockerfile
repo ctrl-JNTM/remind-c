@@ -7,10 +7,6 @@ ENV app_version = "1.0.0-SNAPSHOT"
 USER root
 
 ENV REMIND_USER="remind"
-ENV REMIND_GROUP=${REMIND_USER}-group
-RUN groupadd ${STREAMS_GROUP} && useradd -r -g ${STREAMS_GROUP} ${STREAMS_USER}
-
-USER $STREAMS_USER
 
 ENV work_dir="/home/$REMIND_USER/$app_name"
 
