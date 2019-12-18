@@ -81,7 +81,7 @@ pipeline {
         stage("推送镜像"){
             steps{
                 script{
-                    def imageName = "${env.REGISTRY}/${env.SERVICE_NAME}/chen"
+                    def imageName = "${env.REGISTRY}/${env.SERVICE_NAME}"
                     docker.withRegistry("https://${env.REGISTRY}/${env.SERVICE_NAME}", "${env.REGISTRY_CREDENTIAL}") {
                         def customImage = docker.build(imageName)
                         customImage.push("latest")

@@ -1,4 +1,4 @@
-FROM amazoncorretto:8
+FROM openjdk:8-jre-alpine
 
 ENV LANG="C.UTF-8"
 ENV app_name="remind-c"
