@@ -9,8 +9,9 @@ pipeline {
     }
 
     environment {
-        registry = "gustavoapolinario/docker-test"
-        registryCredential = "dockerhub"
+        REGISTRY = "registry.cn-shanghai.aliyuncs.com/cgsj"
+        SERVICE_NAME = "remind-c"
+        REGISTRY_CREDENTIAL = "alidocker"
         NODE_BIN_DIR = 'node_modules/.bin'
         JOB_NAME = 'message-platform-admin'
         SONAR_HOST = "http://106.14.202.15:9000"
@@ -79,8 +80,12 @@ pipeline {
         stage("推送镜像"){
             steps{
                 script{
-                    sh "sudo docker login --username=陈倔强may registry.cn-hangzhou.aliyuncs.com"
-
+                    def imageName = "${env.REGISTRY}/${env.SERVICE_NAME}/chen"
+                    docker.withRegistry("https://${env.REGISTRY}/${env.SERVICE_NAME}", "${env.REGISTRY_CREDENTIAL}") {
+                        def customImage = docker.build(imageName)
+                        customImage.push("latest")
+                        sh "docker rmi --force \$(docker images -q ${customImage.id} | uniq)"
+                    }
                 }
              }
         }
