@@ -1,8 +1,8 @@
 FROM amazoncorretto:8
 
 ENV LANG="C.UTF-8"
-ENV app_name = "remind-c"
-ENV app_version = "1.0.0-SNAPSHOT"
+ENV app_name="remind-c"
+ENV app_version="1.0.0-SNAPSHOT"
 
 USER root
 
