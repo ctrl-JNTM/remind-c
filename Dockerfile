@@ -10,7 +10,10 @@ ENV REMIND_USER="remind"
 
 ENV work_dir="/home/$REMIND_USER/$app_name"
 
+RUN mkdir -p $work_dir
+
 EXPOSE 8081
+
 
 COPY  ./build/libs/${app_name}-${app_version}.jar  $work_dir
 

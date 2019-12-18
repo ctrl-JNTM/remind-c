@@ -72,6 +72,7 @@ pipeline {
         stage("构建镜像"){
              steps{
                 script{
+                    sh "./gradlew clean build -x test"
                     sh "docker build -t cgsj/remind-c:1.0.0 ."
                 }
              }
